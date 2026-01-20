@@ -23,7 +23,9 @@ async def remove_x_frame_options(request, call_next):
         del response.headers["x-frame-options"]
     return response
 # Endpoint ajustado para cumplir con la validación
+
 @app.get("/api/hello")
+@app.head("/api/hello")
 def say_hello():
     """
     Retorna el contenido exacto esperado por la tarea: Hello, EDP!

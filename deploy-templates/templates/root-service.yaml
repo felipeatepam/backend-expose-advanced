@@ -8,10 +8,10 @@ spec:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: http
+      targetPort: 8080
   selector:
     # Labels that are used to associate the Service with the corresponding Pods.
     # The Service will route traffic to Pods with matching labels.
     app.kubernetes.io/instance: backend-expose-advanced # Label to match a specific instance.
-    app.kubernetes.io/name: backend-expose              # Label to match the application name.
+    app.kubernetes.io/name: backend-expose-advanced              # Label to match the application name.
   type: ClusterIP                                       # Exposes the Service internally within the cluster; not accessible externally.
