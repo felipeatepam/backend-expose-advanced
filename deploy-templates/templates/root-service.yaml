@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: root-service
+  namespace: 0oqfemca-expose-advanced-dev
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: http
+  selector:
+    # Labels that are used to associate the Service with the corresponding Pods.
+    # The Service will route traffic to Pods with matching labels.
+    app.kubernetes.io/instance: backend-expose-advanced # Label to match a specific instance.
+    app.kubernetes.io/name: backend-expose              # Label to match the application name.
+  type: ClusterIP                                       # Exposes the Service internally within the cluster; not accessible externally.
