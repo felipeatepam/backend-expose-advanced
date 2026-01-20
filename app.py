@@ -15,6 +15,13 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
+@app.middleware("http")
+async def remove_x_frame_options(request, call_next):
+    response = await call_next(request)
+    # Eliminamos el encabezado si existe para cumplir el requisito
+    if "x-frame-options" in response.headers:
+        del response.headers["x-frame-options"]
+    return response
 # Endpoint ajustado para cumplir con la validación
 @app.get("/api/hello")
 def say_hello():
