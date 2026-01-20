@@ -29,10 +29,10 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-podSecurityContext: {}
+podSecurityContext:
   fsGroup: 2000
 
-securityContext: {}
+securityContext:
   runAsUser: 1000
   runAsGroup: 3000
 
@@ -41,7 +41,7 @@ service:
   port: 8080
 
 ingress:
-  enabled: false
+  enabled: true
   dnsWildcard: development.krci-dev.cloudmentor.academy
   className: ""
   annotations: {}
