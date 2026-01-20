@@ -33,7 +33,7 @@ A Helm chart for Kubernetes
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
 | ingress.dnsWildcard | string | `"development.krci-dev.cloudmentor.academy"` |  |
-| ingress.enabled | bool | `false` |  |
+| ingress.enabled | bool | `true` |  |
 | ingress.hosts[0].host | string | `"edpDefault"` |  |
 | ingress.hosts[0].paths[0].path | string | `"/"` |  |
 | ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
@@ -43,12 +43,13 @@ A Helm chart for Kubernetes
 | nodeSelector | object | `{}` | https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
-| podSecurityContext | object | `{}` |  |
+| podSecurityContext.fsGroup | int | `2000` |  |
 | readinessProbe.initialDelaySeconds | int | `20` |  |
 | readinessProbe.tcpSocket.port | string | `"http"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
-| securityContext | object | `{}` |  |
+| securityContext.runAsGroup | int | `3000` |  |
+| securityContext.runAsUser | int | `1000` |  |
 | service.port | int | `8080` |  |
 | service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
