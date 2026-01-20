@@ -8,8 +8,8 @@ spec:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: http
+      targetPort: 8080
   selector:
     app.kubernetes.io/instance: backend-expose-advanced
-    app.kubernetes.io/name: backend-expose
+    app.kubernetes.io/name: backend-expose-advanced
   type: ClusterIP

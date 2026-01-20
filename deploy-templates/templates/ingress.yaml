@@ -4,9 +4,10 @@ metadata:
   name: advanced
   namespace: 0oqfemca-expose-advanced-dev
   annotations:
-    # Adds custom NGINX configuration to the Ingress.
-    # This snippet disables the `X-Frame-Options` header, allowing the application to be embedded in iframes.
-    nginx.ingress.kubernetes.io/configuration-snippet: 'more_set_headers X-Frame-Options: none;'
+    # Eliminamos cualquier valor previo y luego ponemos none
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_clear_headers "X-Frame-Options";
+      more_set_headers "X-Frame-Options: none";
 spec:
   rules:
     - host: backend-expose-advanced-0oqfemca-expose-advanced-dev.development.krci-dev.cloudmentor.academy
