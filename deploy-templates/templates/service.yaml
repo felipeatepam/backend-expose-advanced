@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "backend-expose-advanced.fullname" . }}
+  labels:
+    {{- include "backend-expose-advanced.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "backend-expose-advanced.selectorLabels" . | nindent 4 }}
